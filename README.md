@@ -1,0 +1,1 @@
+# Обработка событий и делегирование событий в JavaScript. Асинхронность в JavaScript: промисы, async/await. Получение данных с сервера (Fetch API). Модули и хранение данных на клиенте (LocalStorage, SessionStorage)
