@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo app</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+        body { font-family: 'Nunito', sans-serif; background-color: #f8fafc; }
+        .task-completed { text-decoration: line-through; opacity: 0.5; }
+        .filter-btn.active { background-color: #4f46e5; color: white; border-color: #4f46e5; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center py-10 px-4">
+    <div class="w-full max-w-3xl bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+        
+        <div class="bg-indigo-600 p-6 text-white text-center">
+            <h1 class="text-3xl font-bold tracking-wide"><i class="fas fa-check-double mr-2"></i>Todo app</h1>
+        </div>
+        
+        <div class="p-6 md:p-8">
+            <form id="taskForm" class="flex flex-col md:flex-row gap-3 mb-8">
+                <input type="text" id="taskInput" class="flex-1 bg-slate-50 border border-slate-300 text-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" placeholder="Что планируете сделать?" required>
+                <select id="prioritySelect" class="bg-slate-50 border border-slate-300 text-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition cursor-pointer">
+                    <option value="low">Низкий</option>
+                    <option value="medium" selected>Средний</option>
+                    <option value="high">Высокий</option>
+                </select>
+                <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-xl transition shadow-md hover:shadow-lg active:scale-95">
+                    <i class="fas fa-plus mr-1"></i> Добавить
+                </button>
+            </form>
+
+            <div class="flex flex-wrap gap-2 mb-6 border-b border-slate-100 pb-4" id="filters">
+                <button data-filter="all" class="filter-btn active px-5 py-2 rounded-full border border-slate-300 text-slate-600 text-sm font-semibold transition hover:bg-slate-100">Все</button>
+                <button data-filter="active" class="filter-btn px-5 py-2 rounded-full border border-slate-300 text-slate-600 text-sm font-semibold transition hover:bg-slate-100">Активные</button>
+                <button data-filter="completed" class="filter-btn px-5 py-2 rounded-full border border-slate-300 text-slate-600 text-sm font-semibold transition hover:bg-slate-100">Выполненные</button>
+            </div>
+
+            <ul id="taskList" class="space-y-3 min-h-[250px]"></ul>
+
+            <div class="mt-8 pt-4 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+                <span id="stats" class="text-slate-500 font-medium bg-slate-100 px-4 py-2 rounded-lg">0 задач</span>
+                <div class="flex gap-3">
+                    <button id="loadSamples" class="text-indigo-600 hover:text-indigo-800 font-semibold transition flex items-center gap-2 bg-indigo-50 px-4 py-2 rounded-lg hover:bg-indigo-100">
+                        <i class="fas fa-cloud-download-alt"></i> Загрузить API
+                    </button>
+                    <button id="clearCompleted" class="text-rose-600 hover:text-rose-800 font-semibold transition flex items-center gap-2 bg-rose-50 px-4 py-2 rounded-lg hover:bg-rose-100">
+                        <i class="fas fa-trash-alt"></i> Очистить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
